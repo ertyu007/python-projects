@@ -38,10 +38,3 @@
 
 ---
 
-## 🚀 วิธีใช้งาน
-
-1. **โคลนโปรเจกต์:**
-
-```bash
-git clone https://github.com/ertyu007/python-projects.git
-cd python-projects

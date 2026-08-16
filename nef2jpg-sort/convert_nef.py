@@ -25,9 +25,14 @@ def format_size(bytesize):
     else:
         return f"{bytesize / 1024:.1f} KB"
 
-# --- ตั้งค่าโฟลเดอร์ ---
-input_folder = r'C:\Users\reall\Pictures\102D7100'
-output_folder = r'C:\Users\reall\Pictures\RAW_to_JPG'
+def ask_folder(prompt, default):
+    """ถามโฟลเดอร์จากผู้ใช้ (เผื่อค่าเริ่มต้น) แทนการ hardcode path ส่วนตัว."""
+    value = input(f"{prompt} (Enter เพื่อใช้ '{default}'): ").strip()
+    return value or default
+
+# --- ตั้งค่าโฟลเดอร์ (ถามจากผู้ใช้แทนการ hardcode path ส่วนตัว) ---
+input_folder = ask_folder("โฟลเดอร์ต้นทาง (NEF/JPG)", os.path.join(os.path.expanduser('~'), 'Pictures'))
+output_folder = ask_folder("โฟลเดอร์ปลายทาง (RAW_to_JPG)", os.path.join(input_folder, 'RAW_to_JPG'))
 os.makedirs(output_folder, exist_ok=True)
 
 # --- รวมไฟล์ .nef และ .jpg ---
